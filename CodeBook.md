@@ -12,6 +12,7 @@ The raw data has been downloaded from [http://archive.ics.uci.edu/ml/datasets/Hu
 
 ## Tidy data
 The raw data has been processed applying the following steps:
+
 1. The training and the test sets has been merged to create one data set.
 2. The column containing the measurement of means or a standard deviations has been
 extracted. Variable containing mean(), std(), or meanFreq() has been included. 
