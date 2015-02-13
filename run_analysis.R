@@ -11,19 +11,17 @@ mergeDataSubjectActivitiesSetWithColnames <- function(
     namesDataset <- read.table(pathTxtFileWithNames)
     
     dataSet <- read.table(pathTxtFileWithData, 
-                          col.names = namesDataset[, fileWithNamesColumnIndex],
-                          stringsAsFactors=FALSE
+                          col.names = namesDataset[, fileWithNamesColumnIndex]
                           )
     
     dataSetSubject <- read.table(
         pathTxtFileWithSubjects,
-        col.names = c(subjectIdColname),
-        stringsAsFactors=FALSE)
+        col.names = c(subjectIdColname)
+    )
     
     dataSetActivities <- read.table(
         pathTxtFileWithActivities, 
-        col.names = c(activityColname),
-        stringsAsFactors=FALSE
+        col.names = c(activityColname)
         )
     
     dataSet <- cbind(dataSet, dataSetSubject, dataSetActivities)
@@ -64,31 +62,3 @@ tidyData = aggregate(meanStdDataSet[, 3:81],
                           activity = meanStdDataSet$activity),
                      mean
                      )
-
-# uniqueSubjectIds = unique(meanStdDataSet$subjectId)
-# 
-# tidyData = data.frame()
-# 
-# for(subjectId in uniqueSubjectIds) {    
-#     for(activityLabel in activityLabelsSet[, 2]) {                
-#         activitySubjectSubSet <- subset(meanStdDataSet, 
-#                                         subjectId == subjectId & 
-#                                             activity == activityLabel,
-#                                         select = 1:79 
-#                                         )
-#         
-#         
-#         
-#          variableNames <- colnames(activitySubjectSubSet)
-#          
-#          for(variableName in variableNames) {
-#              if(subjectId == 2 & activityLabel == 'WALKING') {                        
-#                  cat(variableName, "-", mean(activitySubjectSubSet[[variableName]]), "\n")
-#              }
-#              
-#             cat(subjectId, "-", activityLabel, "-", variableName, 
-#                 "-", mean(activitySubjectSubSet[[variableName]]), "\n"
-#             )                
-#          }                                        
-#      }
-# }
