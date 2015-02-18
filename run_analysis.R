@@ -11,7 +11,8 @@ mergeDataSubjectActivitiesSetWithColnames <- function(
     namesDataset <- read.table(pathTxtFileWithNames)
     
     dataSet <- read.table(pathTxtFileWithData, 
-                          col.names = namesDataset[, fileWithNamesColumnIndex]
+                          col.names = namesDataset[, fileWithNamesColumnIndex],
+                          check.names = FALSE
                           )
     
     dataSetSubject <- read.table(
