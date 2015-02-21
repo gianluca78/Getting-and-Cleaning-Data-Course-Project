@@ -1,3 +1,7 @@
+# The function merge a txt file with experiment data 
+# with a txt file with the subject data
+# and assign colnames taken from a third txt file.
+# The function returns a dataframe with the complete data.
 mergeDataSubjectActivitiesSetWithColnames <- function(
     pathTxtFileWithData,
     pathTxtFileWithSubjects,
@@ -46,18 +50,22 @@ testSet <- mergeDataSubjectActivitiesSetWithColnames(
 
 total <- rbind(testSet, trainingSet)
 
+#get the indexes of the column I want to import in the tidy dataframe
 meanStdColumnIndexes <- c(grep("subjectId", colnames(total)),
                           grep("activity", colnames(total)),
                           grep("mean", colnames(total)), 
                           grep("std", colnames(total))                     
                           )
 
+#subset the complete dataframe to extract only the column with means and stds
 meanStdDataSet <- total[, meanStdColumnIndexes]
 
+#apply descriptive variable names in the activity column
 meanStdDataSet$activity <- sapply(meanStdDataSet$activity, function(x) {
     as.character(activityLabelsSet[x, 2])
 })
 
+#aggregate data for each subject for each activity with average values
 tidyData = aggregate(meanStdDataSet[, 3:81], 
                      list(subjectId = meanStdDataSet$subjectId, 
                           activity = meanStdDataSet$activity),

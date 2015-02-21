@@ -1,16 +1,18 @@
-# Data collected from the accelerometers from the Samsung Galaxy S smartphone
+## Code Book
 
-## Raw data
-The raw data contains 561 variable measures, including both time and frequencies 
-measures. Each variable is measured for a specific subject involved in a specific activity for a total of 10299 observations. 
+### Raw data
+The raw data has been downloaded from [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) on February 2, 2015 and it includes data 
+of an experiment to recognize human activity starting from data gathered by the 
+Samsung Galaxy S smartphone.
 
 According to the experiment authors:
 
 > The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 
-The raw data has been downloaded from [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones) on February 2, 2015.
+The raw data contains 561 variable measures, including both time and frequencies 
+measures. Each variable is measured for a specific subject involved in a specific activity for a total of 10299 observations. 
 
-## Tidy data
+### Tidy data
 The raw data has been processed applying the following steps:
 
 1. The training and the test sets has been merged to create one data set.
@@ -24,10 +26,10 @@ in order to have a single record for each subject and activity containing the
 average of data included in the original set.
 5. Data processed according to the previous steps is exported in the tidy_data.txt file.
 
-### Format
+#### Format
 A data frame with 180 observations on 81 variables.
 
-### Variable details
+#### Variable details
 variableName                    |type      |description                                                                  |valuesRange                               |
 |:-------------------------------|:---------|:----------------------------------------------------------------------------|:-----------------------------------------|
 |subjectId                       |integer   |Id of the subject involved in the experiment               |1..30                                     |
